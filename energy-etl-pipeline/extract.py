@@ -2,7 +2,7 @@ import requests
 import json
 
 API_URL = "https://api.eia.gov/v2/electricity/electric-power-operational-data/data/"
-API_KEY = "YOUR_API_KEY"  # replace with your own
+API_KEY = "9QCWCCLX49IEfe24qYTTKT4AioZEpyARbZUPugZ1"  # replace with your own
 
 params = {
     "frequency": "monthly",
