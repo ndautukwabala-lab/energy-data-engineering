@@ -1,8 +1,9 @@
 import requests
 import json
+import os
 
 API_URL = "https://api.eia.gov/v2/electricity/electric-power-operational-data/data/"
-API_KEY = "YOUR_API_KEY"  # replace with your own
+API_KEY = "9QCWCCLX49IEfe24qYTTKT4AioZEpyARbZUPugZ1"  # replace with your own
 
 params = {
     "frequency": "monthly",
@@ -15,11 +16,16 @@ params = {
 }
 
 def extract_data():
+    # Ensure folder exists BEFORE writing
+    os.makedirs("data", exist_ok=True)
+
     response = requests.get(API_URL, params=params)
     if response.status_code == 200:
         data = response.json()
+
         with open("data/sample_raw.json", "w") as f:
             json.dump(data, f)
+
         print("Data extracted successfully!")
     else:
         print("Failed to extract data:", response.status_code)
